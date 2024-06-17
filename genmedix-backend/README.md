@@ -1,5 +1,5 @@
 # Project GenMedix
-- By Team Dev Titans
+- By Team DevTitans
 
 ## Table of Contents
 - [Introduction](#introduction)
