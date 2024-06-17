@@ -61,5 +61,5 @@ GenMedix is a mental health AI software designed to help users improve and recov
 For any questions or feedback, please contact us at [igedavid01@gmail.com] or [samuelajala01@gmail.com].
 
 ### Team DevTitans
-- [David Ige](!https://github.com/defdave)
+- [David Ige](https://github.com/defdave)
 - [Samuel Ajala](https://github.com/samuelajala01)
