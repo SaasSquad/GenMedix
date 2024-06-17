@@ -4,10 +4,11 @@
 ## Table of Contents
 - [Introduction](#introduction)
 - [Features](#features)
-- [Installation](#installation)
+- [Tools](#tools)
+- [Backend Installation](#backend-installation)
 - [Credentials](#credentials)
-- [Running_the_Application](#running_the_application)
-- [API_Endpoints](#api_endpoints)
+- [Running_the_Application](#running-the-application)
+- [API_Endpoints](#api-endpoints)
 - [Contact](#contact)
 
 ## Introduction
@@ -17,14 +18,22 @@ This project sets up an API using FastAPI to interact with a Generative AI model
 - Interactive Chat: Users can ask questions and receive responses from Eliza.
 - Configured Model: The AI model is fine-tuned with safety settings and specific parameters to ensure quality and safety.
 
-## Installation
+## Tools
+# Libraries and Frameworks:
+- FastAPI: The main class to create the FastAPI application.
+- CORSMiddleware: Middleware to handle Cross-Origin Resource Sharing (CORS) policies.
+- uvicorn: An ASGI server used to run the FastAPI application.
+- google.generativeai: A module from Google's generative AI library.
+
+## Backend Installation
 1. Clone the repository:
     ```bash
     git clone https://github.com/Defdave/GenMedix.git
     ```
-2. Navigate to the project directory:
+    Step 1 will be completed using information from the general README file.
+2. Navigate to the backend directory:
     ```bash
-    cd GenMedix/genmedix_backend
+    cd genmedix_backend
     ```
 3. Install dependencies:
     ```bash
@@ -35,6 +44,7 @@ This project sets up an API using FastAPI to interact with a Generative AI model
 ## Credentials
 You'll need to get these api keys:
 - Gemini API key: https://aistudio.google.com
+
 Add it to line 8 of the code:
 GOOGLE_API_KEY = "YOUR_GOOGLE_API_KEY"
 
