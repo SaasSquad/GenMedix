@@ -1,5 +1,5 @@
 # Project GenMedix
-By Team Dev Titans
+- By Team Dev Titans
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -68,3 +68,7 @@ json
 
 ## Contact
 For any questions or feedback, please contact us at [samuelajala01@gmail.com] or [igedavid01@gmail.com].
+
+### Team DevTitans
+- [David Ige](!https://github.com/defdave)
+- [Samuel Ajala](https://github.com/samuelajala01)
