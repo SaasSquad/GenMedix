@@ -21,6 +21,12 @@
 ## Backend
 - Please refer to the genmedix-backend directory for detailed instructions on how to install and run the backend API server.
 
+## Desktop iew
+![](images/Dscreenshot.JPG)
+
+## Mobile view
+![](images/Mscreenshot.JPG)
+
 ## Contact
 - For any questions or feedback regarding the GenMedix project, please contact us at igedavid01@gmail.com or samuelajala01@gmail.com.
 
