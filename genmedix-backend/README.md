@@ -30,12 +30,16 @@ This project sets up an API using FastAPI to interact with a Generative AI model
     ```bash
     git clone https://github.com/Defdave/GenMedix.git
     ```
-    Step 1 will be completed using information from the general README file.
-2. Navigate to the backend directory:
+2. Navigate to the project directory:
+    ```bash
+    cd GenMedix
+    ```
+    Step 1 and 2 will be completed using information from the general README file.
+3. Navigate to the genmedix_backend directory once you are in the GenMedix folder:
     ```bash
     cd genmedix_backend
     ```
-3. Install dependencies:
+4. Install dependencies:
     ```bash
     pip install -r requirements.txt
     ```

@@ -34,12 +34,16 @@ GenMedix is a mental health AI software designed to help users improve and recov
     ```bash
     git clone https://github.com/defdave/projectgenmedix.git
     ```
-    Step 1 will be completed using information from the general README file.
-2. Navigate to the project directory, depending on where you are:
+2. Navigate to the project directory:
+    ```bash
+    cd GenMedix
+    ```
+    Step 1 and 2 will be completed using information from the general README file.
+3. Navigate to the genmedix-frontend directory once you are in the GenMedix folder:
     ```bash
     cd genmedix-frontend
     ```
-3. Install dependencies:
+4. Install dependencies:
     ```bash
     yarn install
     ```
