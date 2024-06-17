@@ -54,6 +54,7 @@ GenMedix is a mental health AI software designed to help users improve and recov
     yarn run dev
     ```
 2. Open your browser and go to `http://localhost:5173` to see the application running.
+3. you can change the remote backend server url to local host after running the backend server on your local computer at ./src/backend-API/api.jsx
 
 
 

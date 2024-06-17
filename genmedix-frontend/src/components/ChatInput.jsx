@@ -2,6 +2,7 @@ import { useStoreActions } from 'easy-peasy';
 import { useState } from 'react';
 import { PiPaperPlaneFill } from "react-icons/pi";
 import { GiPlainSquare } from "react-icons/gi";
+import backendAPI from '../backend-API/api';
 
 const ChatInput = () => {
   const [message, setMessage] = useState('');
@@ -27,7 +28,7 @@ const ChatInput = () => {
 
 
       try {
-        const res = await fetch('https://genmedix-backend.onrender.com/chat', {
+        const res = await fetch(backendAPI, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
