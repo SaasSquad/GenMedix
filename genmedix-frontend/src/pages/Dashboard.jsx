@@ -6,6 +6,7 @@ import Header from "../components/Header.jsx";
 
 const Dashboard = () => {
   const user = useStoreState((state) => state.user);
+  const name = user.displayName
   const [showTestBtn, setShowTestBtn] = useState(false);
   const [selectedChart, setSelectedChart] = useState(1);
   const isOpen = useStoreState(state => state.isOpen)
@@ -14,9 +15,11 @@ const Dashboard = () => {
   const fetchScores = useStoreActions(actions => actions.fetchScores)
 
   useEffect(() => {
-    fetchScores();
+    if (name) {
+      fetchScores(name);
+    }
 
-  }, [fetchScores]);
+  }, [fetchScores, name]);
 
   const dataSets = dataScores ? {
     1: {
@@ -31,7 +34,7 @@ const Dashboard = () => {
       dataPoints: dataScores.Some_stuff.length == 0 ? ['0'] : dataScores.Some_stuff,
       title: "Some stuff",
     },
-  } : {};
+  } : '';
 
   const showTestBox = () => {
     setShowTestBtn(!showTestBtn);
@@ -40,8 +43,7 @@ const Dashboard = () => {
   const datasetKeys = [1, 2, 3];
 
   return (
-    <>{
-      dataScores &&
+    <>
       <div className="bg-gray-800 h-screen leading-7 text-white w-screen overflow-auto">
         <Header />
         <section className={`h-[92%] pb-8 w-[85%] md:w-[80%] mx-auto overflow-auto transition-all duration-500 ease-in-out ${isOpen && 'md:ml-60'}`}>
@@ -49,7 +51,7 @@ const Dashboard = () => {
             <h1>Dashboard</h1>
             <h2>View your stats and progress</h2>
             <div className="block sm:flex border border-blue-400 border-2 sm:justify-around text-center p-4 sm:p-8 mb-8 rounded-md">
-              {dataScores &&
+              {dataScores ?
                 datasetKeys.map((key) => {
                   const { dataPoints } = dataSets[key];
                   const lastScore = dataPoints[dataPoints.length - 1];
@@ -61,26 +63,27 @@ const Dashboard = () => {
                     </div>
                   );
                 })
+                : "You don't have any statics yet! Take the assessment to see your progress."
               }
             </div>
 
-            <div className="flex justify-around">
+            <div className="flex justify-around my-4">
               <button
-                className={`chart_button ${selectedChart === 1 ? "chart_button_active" : ""
+                className={`chart_button rounded-md ${selectedChart === 1 ? "chart_button_active" : ""
                   }`}
                 onClick={() => setSelectedChart(1)}
               >
                 Happiness
               </button>
               <button
-                className={`chart_button ${selectedChart === 2 ? "chart_button_active" : ""
+                className={`chart_button rounded-md ${selectedChart === 2 ? "chart_button_active" : ""
                   }`}
                 onClick={() => setSelectedChart(2)}
               >
                 Well-being
               </button>
               <button
-                className={`chart_button ${selectedChart === 3 ? "chart_button_active" : ""
+                className={`chart_button rounded-md ${selectedChart === 3 ? "chart_button_active" : ""
                   }`}
                 onClick={() => setSelectedChart(3)}
               >
@@ -88,13 +91,16 @@ const Dashboard = () => {
               </button>
             </div>
 
-            <LineChart
+            {
+              dataScores &&
+              <LineChart
               dataPoints={dataSets[selectedChart].dataPoints}
               title={dataSets[selectedChart].title}
             />
 
+            }
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold mt-4 py-2 px-4 rounded"
               onClick={showTestBox}
             >
               Take Assessment
@@ -115,7 +121,6 @@ const Dashboard = () => {
           </div>
         </section>
       </div>
-    }
     </>
   );
 };

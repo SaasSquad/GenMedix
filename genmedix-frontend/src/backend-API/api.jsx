@@ -1,4 +1,4 @@
 // this is the remote host url can be change to local host url
-const backendAPI = 'https://genmedix-backend.onrender.com/chat' 
+const baseurl = 'http://127.0.0.1:8000' 
 
-export default backendAPI;
+export default baseurl;

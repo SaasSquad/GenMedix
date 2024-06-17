@@ -1,9 +1,12 @@
 import { createStore, action, thunk } from 'easy-peasy'
 // import api from './api/posts'
-import { addDoc, arrayUnion, collection, deleteDoc, doc, getDoc, getDocs, query, updateDoc, where } from 'firebase/firestore'
+import { addDoc, arrayUnion, collection, deleteDoc, doc, getDoc, getDocs, query, setDoc, updateDoc, where } from 'firebase/firestore'
 import { db } from './firebase'
 
+
+// Create the store
 export default createStore({
+     // State properties
     email: [],
     setEmail: action((state, payload) => {
         state.email = payload
@@ -64,25 +67,41 @@ export default createStore({
     setDataScores: action((state, payload) => {
         state.dataScores = payload
     }),
-    fetchScores: thunk(async (actions) => {
-        const docRef = doc(db, "totalScore", "totalScore");
+
+    // Fetch scores from Firestore and update the state
+    fetchScores: thunk(async (actions, name) => {
+        const docRef = doc(db, "totalScore", name);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
             actions.setDataScores(docSnap.data());
         } else {
             console.log("No such document!");
+            actions.setDataScores(null)
         }
     }),
-    addScore: thunk(async (actions, totalScore) => {
-        const docRef = doc(db, "totalScore", "totalScore");
+    // Add a new score to Firestore and refresh the scores in the state
+    addScore: thunk(async (actions, newScore) => {
+        console.log(newScore)
+        const {name, totalScore} = newScore
+        const docRef = doc(db, "totalScore", name);
+        const docSnap = await getDoc(docRef);
 
+        if (!docSnap.exists()) {
+            // Create a new document with default values if it doesn't exist
+            await setDoc(docRef, {
+              Happiness: [],
+              Overall_well_being: [],
+              Some_stuff: [],
+            });
+          }
         await updateDoc(docRef, {
             Happiness: arrayUnion(totalScore),
             Overall_well_being: arrayUnion(totalScore),
-            Some_stuff: arrayUnion(totalScore)
+            Some_stuff: arrayUnion(totalScore),
         });
-        actions.fetchScores()
+        actions.fetchScores(name)
     }),
+    // Fetch notes from Firestore for a specific user and update the state
     fetchNotes: thunk(async (actions, name) => {
         const q = query(collection(db, "notes"), where("userId", "==", name));
 
@@ -95,6 +114,7 @@ export default createStore({
 
         actions.setNotes(newNotes);
     }),
+    // Add a new note to Firestore and update the state
     addNote: thunk(async (actions, newNote, helpers) => {
         const { notes } = helpers.getState();
         if (newNote.title.trim() !== '') {
@@ -105,7 +125,7 @@ export default createStore({
         actions.setTitle('');
         actions.setDescription('');
     }),
-
+    // Delete a note from Firestore and update the state
     deleteNote: thunk(async (actions, id, helpers) => {
         const { notes } = helpers.getState();
         try {
@@ -115,6 +135,7 @@ export default createStore({
             console.error("Error deleting document: ", error);
         }
     }),
+    // Save edited note to Firestore and update the state
     saveEdit: thunk(async (actions, updatedNote, helpers) => {
         const { notes } = helpers.getState();
         const { id } = updatedNote;
@@ -128,7 +149,7 @@ export default createStore({
         actions.setTitle('');
         actions.setDescription('');
     }),
-
+     // Add a new chat message to the state
     onSendMessage: thunk((actions, chatmessage, helpers) => {
         const { chatMessages } = helpers.getState();
         actions.setChatMessages([

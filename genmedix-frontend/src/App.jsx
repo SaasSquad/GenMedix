@@ -13,7 +13,10 @@ function App() {
   const setUser = useStoreActions(actions => actions.setUser)
 
   useEffect(() => {
+    // This callback is invoked whenever the user's authentication state changes.
     const unsubscribe = auth.onAuthStateChanged(user => {
+
+      // with the new user object. This updates the user state in the store.
       setUser(user);
     });
 

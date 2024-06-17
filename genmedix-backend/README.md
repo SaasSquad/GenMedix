@@ -34,7 +34,7 @@ This project sets up an API using FastAPI to interact with a Generative AI model
     ```bash
     cd GenMedix
     ```
-    Step 1 and 2 will be completed using information from the general README file.
+    Step 1 and 2 would have been completed using information from the general README file.
 3. Navigate to the genmedix_backend directory once you are in the GenMedix folder:
     ```bash
     cd genmedix_backend

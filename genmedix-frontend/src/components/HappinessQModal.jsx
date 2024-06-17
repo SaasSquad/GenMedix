@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { useStoreActions } from "easy-peasy";
+import { useStoreActions, useStoreState } from "easy-peasy";
 
 const HappinessQModal = () => {
+  const user = useStoreState((state) => state.user);
   const [showModal, setShowModal] = useState(false);
   const addScore = useStoreActions(actions => actions.addScore)
   const [score, setScore] = useState(0);
@@ -61,7 +62,11 @@ const HappinessQModal = () => {
       totalScore += answerValue;
     });
 
-    addScore(totalScore)
+    const newScore = {
+      name: user.displayName,
+      totalScore: totalScore
+    }
+    addScore(newScore)
 
     
     setScore(totalScore);

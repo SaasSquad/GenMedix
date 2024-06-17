@@ -2,9 +2,10 @@ import { useStoreActions } from 'easy-peasy';
 import { useState } from 'react';
 import { PiPaperPlaneFill } from "react-icons/pi";
 import { GiPlainSquare } from "react-icons/gi";
-import backendAPI from '../backend-API/api';
+import baseurl from '../backend-API/api';
 
 const ChatInput = () => {
+  const url = `${baseurl}/chat`
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [placeholder, setPlaceholder] = useState('Chat with Eliza...');
@@ -28,7 +29,7 @@ const ChatInput = () => {
 
 
       try {
-        const res = await fetch(backendAPI, {
+        const res = await fetch(url, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

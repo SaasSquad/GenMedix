@@ -8,6 +8,7 @@ import Preloader from "./Preloader";
 import { useStoreActions, useStoreState } from "easy-peasy";
 
 const Home = () => {
+    // Getting the state and actions from the store
     const user = useStoreState(state => state.user)
     const setIntro = useStoreActions(actions => actions.setIntro)
     const intro = useStoreState(state => state.intro);
@@ -18,6 +19,7 @@ const Home = () => {
     const setChatMessages = useStoreActions(actions => actions.setChatMessages)
     const dropdownRef = useRef(null);
 
+    // useEffect to handle clicks outside the dropdown to close it
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -32,6 +34,7 @@ const Home = () => {
         };
     }, []);
 
+    // useEffect to load saved chat messages from local storage on component mount
     useEffect(() => {
         const savedConversation = JSON.parse(localStorage.getItem('chatMessages'));
         if (savedConversation) {
