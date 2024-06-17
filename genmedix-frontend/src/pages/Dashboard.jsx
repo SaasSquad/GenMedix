@@ -3,6 +3,7 @@ import HappinessQBtn from "../components/HappinessQBtn.jsx";
 import LineChart from "../components/LineChart.jsx";
 import { useEffect, useState } from "react";
 import Header from "../components/Header.jsx";
+import GeneralQBtn from "../components/GeneralQBtn.jsx";
 
 const Dashboard = () => {
   const user = useStoreState((state) => state.user);
@@ -28,7 +29,7 @@ const Dashboard = () => {
     },
     2: {
       dataPoints: dataScores.Overall_well_being.length == 0 ? ['0'] : dataScores.Overall_well_being,
-      title: "Overall Well-being",
+      title: "General Well-being",
     },
     3: {
       dataPoints: dataScores.Some_stuff.length == 0 ? ['0'] : dataScores.Some_stuff,
@@ -58,12 +59,12 @@ const Dashboard = () => {
                   return (
                     <div key={key} className="m-4">
                       <button className="p-8 rounded-full border border-blue-600 border-[0.5rem] text-md sm:text-2xl">
-                        {lastScore}%
+                        {lastScore}
                       </button>
                     </div>
                   );
                 })
-                : "You don't have any statics yet! Take the assessment to see your progress."
+                : "You don't have any statistics yet! Take the assessment to see your progress."
               }
             </div>
 
@@ -82,13 +83,13 @@ const Dashboard = () => {
               >
                 Well-being
               </button>
-              <button
+              {/* <button
                 className={`chart_button rounded-md ${selectedChart === 3 ? "chart_button_active" : ""
                   }`}
                 onClick={() => setSelectedChart(3)}
               >
                 Show Chart 3
-              </button>
+              </button> */}
             </div>
 
             {
@@ -107,14 +108,13 @@ const Dashboard = () => {
             </button>
             {showTestBtn && (
               <>
-                <div className="block sm:flex my-4 sm:justify-between md:w-3/4">
+                <div className="block sm:flex my-4 sm:justify-around md:w-3/4">
                   <HappinessQBtn />
-                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    General Well-being
-                  </button>
-                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  <GeneralQBtn/>
+                  
+                  {/* <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Some Stuff
-                  </button>
+                  </button> */}
                 </div>
               </>
             )}
