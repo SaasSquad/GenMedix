@@ -13,79 +13,79 @@ const GeneralQModal = () => {
         "to teach younger family members what life was like when I was young and living in a different time.",
     },
     { question: "to help me 'put my house in order' before I die." },
-    // {
-    //   question:
-    //     "because it fills the gap when I find time 'heavy on my hands'.",
-    // },
-    // { question: "to help me plan for the future." },
-    // { question: "to keep alive the memory of a dead loved one." },
-    // {
-    //   question:
-    //     "because it brings me closer to newer friends and acquaintances.",
-    // },
-    // { question: "because it promotes fellowship and a sense of belonging." },
-    // {
-    //   question:
-    //     "because it helps me contrast the ways I’ve changed with the ways I’ve stayed the same.",
-    // },
-    // {
-    //   question:
-    //     "because it gives me a sense of personal completion or wholeness as I approach the end of life.",
-    // },
-    // { question: "to see how my past fits in with my journey through life." },
-    // { question: "to pass the time during idle or restless hours." },
-    // { question: "to help solve some current difficulty." },
-    // { question: "to keep painful memories alive." },
-    // {
-    //   question:
-    //     "out of loyalty to keep alive the memory of someone close to me who has died.",
-    // },
-    // { question: "to rehash lost opportunities." },
-    // { question: "to reduce boredom." },
-    // {
-    //   question:
-    //     "to remember an earlier time when I was treated unfairly by others.",
-    // },
-    // {
-    //   question:
-    //     "to remind me that I have the skills to cope with present problems.",
-    // },
-    // { question: "to relieve depression." },
-    // { question: "to transmit knowledge that I’ve acquired to someone else." },
-    // { question: "for lack of any better mental stimulation." },
-    // { question: "to create a common bond between old and new friends." },
-    // { question: "in order to teach younger persons about cultural values." },
-    // { question: "because it gives me a sense of self-identity." },
-    // { question: "to remember someone who has passed away." },
-    // { question: "because remembering my past helps me define who I am now." },
-    // { question: "as a way of bridging the 'generation gap'." },
-    // { question: "as a 'social lubricant' to get people talking." },
-    // { question: "because it helps me prepare for my own death." },
-    // { question: "in order to leave a legacy of family history." },
-    // { question: "to put current problems in perspective." },
-    // { question: "to try to understand myself better." },
-    // {
-    //   question:
-    //     "because I feel less fearful of death after I finish reminiscing.",
-    // },
-    // { question: "to create ease of conversation." },
-    // {
-    //   question:
-    //     "because it helps me see that I’ve lived a full life and can therefore accept death more calmly.",
-    // },
-    // { question: "as a means of self-exploration and growth." },
-    // { question: "for something to do." },
-    // { question: "because it helps me cope with thoughts of my own mortality." },
-    // {
-    //   question: "to see how my strengths can help me solve a current problem.",
-    // },
-    // { question: "to rekindle bitter memories." },
-    // {
-    //   question:
-    //     "to remember people I was close to but who are no longer a part of my life.",
-    // },
-    // { question: "to avoid repeating past mistakes at some later date." },
-    // { question: "to keep memories of old hurts fresh in my mind." },
+    {
+      question:
+        "because it fills the gap when I find time 'heavy on my hands'.",
+    },
+    { question: "to help me plan for the future." },
+    { question: "to keep alive the memory of a dead loved one." },
+    {
+      question:
+        "because it brings me closer to newer friends and acquaintances.",
+    },
+    { question: "because it promotes fellowship and a sense of belonging." },
+    {
+      question:
+        "because it helps me contrast the ways I’ve changed with the ways I’ve stayed the same.",
+    },
+    {
+      question:
+        "because it gives me a sense of personal completion or wholeness as I approach the end of life.",
+    },
+    { question: "to see how my past fits in with my journey through life." },
+    { question: "to pass the time during idle or restless hours." },
+    { question: "to help solve some current difficulty." },
+    { question: "to keep painful memories alive." },
+    {
+      question:
+        "out of loyalty to keep alive the memory of someone close to me who has died.",
+    },
+    { question: "to rehash lost opportunities." },
+    { question: "to reduce boredom." },
+    {
+      question:
+        "to remember an earlier time when I was treated unfairly by others.",
+    },
+    {
+      question:
+        "to remind me that I have the skills to cope with present problems.",
+    },
+    { question: "to relieve depression." },
+    { question: "to transmit knowledge that I’ve acquired to someone else." },
+    { question: "for lack of any better mental stimulation." },
+    { question: "to create a common bond between old and new friends." },
+    { question: "in order to teach younger persons about cultural values." },
+    { question: "because it gives me a sense of self-identity." },
+    { question: "to remember someone who has passed away." },
+    { question: "because remembering my past helps me define who I am now." },
+    { question: "as a way of bridging the 'generation gap'." },
+    { question: "as a 'social lubricant' to get people talking." },
+    { question: "because it helps me prepare for my own death." },
+    { question: "in order to leave a legacy of family history." },
+    { question: "to put current problems in perspective." },
+    { question: "to try to understand myself better." },
+    {
+      question:
+        "because I feel less fearful of death after I finish reminiscing.",
+    },
+    { question: "to create ease of conversation." },
+    {
+      question:
+        "because it helps me see that I’ve lived a full life and can therefore accept death more calmly.",
+    },
+    { question: "as a means of self-exploration and growth." },
+    { question: "for something to do." },
+    { question: "because it helps me cope with thoughts of my own mortality." },
+    {
+      question: "to see how my strengths can help me solve a current problem.",
+    },
+    { question: "to rekindle bitter memories." },
+    {
+      question:
+        "to remember people I was close to but who are no longer a part of my life.",
+    },
+    { question: "to avoid repeating past mistakes at some later date." },
+    { question: "to keep memories of old hurts fresh in my mind." },
   ];
 
   const handleSubmit = async (e) => {
