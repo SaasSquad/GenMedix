@@ -10,39 +10,39 @@ const HappinessQModal = () => {
   const questions = [
     { question: "I don’t feel particularly pleased with the way I am. (R) ", type: "N" },
     { question: "How likely are you to recommend us?", type: "N" },
-    { question: "I am intensely interested in other people", type: "R" },
-    { question: "I have very warm feelings towards almost everyone.", type: "N" },
-    { question: "I rarely wake up feeling rested. (R)", type: "N" },
-    { question: "I am not particularly optimistic about the future. (R) ", type: "N" },
-    { question: "I find most things amusing.", type: "N" },
-    { question: "I am always committed and involved.", type: "N" },
-    { question: "Life is good type:",type: "N" },
-    { question: "I do not think that the world is a good place. (R).", type: "N" },
-    { question: "I laugh a lot", type: "N" },
-    { question: "I am well satisfied about everything in my life.", type: "N" },
-    { question: "I don’t think I look attractive. (R) ", type: "N" },
-    { question: "There is a gap between what I would like to do and what I have done. (R) ", type: "N" },
-    { question: "I am very happy", type: "N" },
-    { question: "I find beauty in some things.", type: "N" },
-    { question: " I always have a cheerful effect on others.", type: "N" },
-    { question: "I can fit in (find time for) everything I want to.", type: "N" },
-    { question: "I feel that I am not especially in control of my life. (R", type: "N" },
-    { question: "I feel able to take anything on.", type: "N" },
-    { question: "I feel fully mentally alert.", type: "N" },
-    { question: "I often experience joy and elation.", type: "N" },
-    { question: "I don{'}t find it easy to make decisions. (R)", type: "N" },
-    { question: "I don’t have a particular sense of meaning and purpose in my life. (R) ", type: "N" },
-    { question: "I feel I have a great deal of energy.", type: "N" },
-    { question: "I usually have a good influence on events.", type: "N" },
-    { question: " I don’t have fun with other people. (R)", type: "N" },
-    { question: "I don’t feel particularly healthy. (R)", type: "N" },
-    { question: "I don’t have particularly happy memories of the past. (R)", type: "N" }
+    // { question: "I am intensely interested in other people", type: "R" },
+    // { question: "I have very warm feelings towards almost everyone.", type: "N" },
+    // { question: "I rarely wake up feeling rested. (R)", type: "N" },
+    // { question: "I am not particularly optimistic about the future. (R) ", type: "N" },
+    // { question: "I find most things amusing.", type: "N" },
+    // { question: "I am always committed and involved.", type: "N" },
+    // { question: "Life is good type:",type: "N" },
+    // { question: "I do not think that the world is a good place. (R).", type: "N" },
+    // { question: "I laugh a lot", type: "N" },
+    // { question: "I am well satisfied about everything in my life.", type: "N" },
+    // { question: "I don’t think I look attractive. (R) ", type: "N" },
+    // { question: "There is a gap between what I would like to do and what I have done. (R) ", type: "N" },
+    // { question: "I am very happy", type: "N" },
+    // { question: "I find beauty in some things.", type: "N" },
+    // { question: " I always have a cheerful effect on others.", type: "N" },
+    // { question: "I can fit in (find time for) everything I want to.", type: "N" },
+    // { question: "I feel that I am not especially in control of my life. (R", type: "N" },
+    // { question: "I feel able to take anything on.", type: "N" },
+    // { question: "I feel fully mentally alert.", type: "N" },
+    // { question: "I often experience joy and elation.", type: "N" },
+    // { question: "I don{'}t find it easy to make decisions. (R)", type: "N" },
+    // { question: "I don’t have a particular sense of meaning and purpose in my life. (R) ", type: "N" },
+    // { question: "I feel I have a great deal of energy.", type: "N" },
+    // { question: "I usually have a good influence on events.", type: "N" },
+    // { question: " I don’t have fun with other people. (R)", type: "N" },
+    // { question: "I don’t feel particularly healthy. (R)", type: "N" },
+    // { question: "I don’t have particularly happy memories of the past. (R)", type: "N" }
   ];
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     const answers = document.querySelectorAll("select");
-    let totalScore = 0;
+    let happinessScore = 0;
 
     answers.forEach((answer) => {
       const questionIndex = parseInt(answer.name);
@@ -59,17 +59,18 @@ const HappinessQModal = () => {
 
       // the above gives unexpected results
 
-      totalScore += answerValue;
+      happinessScore += answerValue;
     });
 
     const newScore = {
       name: user.displayName,
-      totalScore: totalScore
+      happinessScore: parseInt((happinessScore / 258) * 100),
+      updateType: 'happiness'
     }
     addScore(newScore)
 
     
-    setScore(totalScore);
+    setScore(happinessScore);
     setShowModal(false);
   };
 
@@ -215,7 +216,7 @@ const HappinessQModal = () => {
                         Your score for the questionnaire is:
                       </p>
                       <p className="mt-2 text-3xl font-bold text-gray-900">
-                        {parseInt(score)}
+                      {parseInt((score / 258) * 100)}%
                       </p>
                     </div>
                   </div>

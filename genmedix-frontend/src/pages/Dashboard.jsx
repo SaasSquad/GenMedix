@@ -24,24 +24,20 @@ const Dashboard = () => {
 
   const dataSets = dataScores ? {
     1: {
-      dataPoints: dataScores.Happiness.length == 0 ? ['0'] : dataScores.Happiness,
+      dataPoints: dataScores.Happiness.length == 0 ? ['N'] : dataScores.Happiness,
       title: "Happiness",
     },
     2: {
-      dataPoints: dataScores.Overall_well_being.length == 0 ? ['0'] : dataScores.Overall_well_being,
+      dataPoints: dataScores.General_well_being.length == 0 ? ['N'] : dataScores.General_well_being,
       title: "General Well-being",
-    },
-    3: {
-      dataPoints: dataScores.Some_stuff.length == 0 ? ['0'] : dataScores.Some_stuff,
-      title: "Some stuff",
-    },
+    }
   } : '';
 
   const showTestBox = () => {
     setShowTestBtn(!showTestBtn);
   };
 
-  const datasetKeys = [1, 2, 3];
+  const datasetKeys = [1, 2];
 
   return (
     <>
@@ -58,9 +54,14 @@ const Dashboard = () => {
                   const lastScore = dataPoints[dataPoints.length - 1];
                   return (
                     <div key={key} className="m-4">
-                      <button className="p-8 rounded-full border border-blue-600 border-[0.5rem] text-md sm:text-2xl">
+                      {
+                        lastScore !== 'N' ?
+                        <button className="p-8 rounded-full border border-blue-600 border-[0.5rem] text-md sm:text-2xl">
                         {lastScore}
                       </button>
+                      :
+                      <h2></h2>
+                      }
                     </div>
                   );
                 })

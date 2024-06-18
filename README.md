@@ -41,6 +41,7 @@ You can view the live site [here](https://genmedix.vercel.app).
 ## Backend
 
 For detailed instructions on how to install and run the backend API server, please refer to the `genmedix-backend` directory.
+Note: The backend requires an API key for functionality. Instructions for obtaining the API key are in the backend's README file.
 
 ## Desktop View
 

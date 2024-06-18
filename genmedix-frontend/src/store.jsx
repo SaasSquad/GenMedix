@@ -6,7 +6,7 @@ import { db } from './firebase'
 
 // Create the store
 export default createStore({
-     // State properties
+    // State properties
     email: [],
     setEmail: action((state, payload) => {
         state.email = payload
@@ -82,23 +82,30 @@ export default createStore({
     // Add a new score to Firestore and refresh the scores in the state
     addScore: thunk(async (actions, newScore) => {
         console.log(newScore)
-        const {name, totalScore} = newScore
+        const { name, happinessScore, wellBeingScore, updateType } = newScore
         const docRef = doc(db, "totalScore", name);
         const docSnap = await getDoc(docRef);
 
         if (!docSnap.exists()) {
             // Create a new document with default values if it doesn't exist
             await setDoc(docRef, {
-              Happiness: [],
-              Overall_well_being: [],
-              Some_stuff: [],
+                Happiness: [],
+                General_well_being: [],
             });
-          }
-        await updateDoc(docRef, {
-            Happiness: arrayUnion(totalScore),
-            Overall_well_being: arrayUnion(totalScore),
-            Some_stuff: arrayUnion(totalScore),
-        });
+        }
+        const updates = {};
+        if (updateType === "happiness") {
+            updates.Happiness = arrayUnion(happinessScore);
+        }
+        if (updateType === "wellBeing") {
+            updates.General_well_being = arrayUnion(wellBeingScore);
+        }
+
+        await updateDoc(docRef, updates);
+        // await updateDoc(docRef, {
+        //     Happiness: arrayUnion(happinessScore),
+        //     general_well_being: arrayUnion(wellBeingScore)
+        // });
         actions.fetchScores(name)
     }),
     // Fetch notes from Firestore for a specific user and update the state
@@ -149,7 +156,7 @@ export default createStore({
         actions.setTitle('');
         actions.setDescription('');
     }),
-     // Add a new chat message to the state
+    // Add a new chat message to the state
     onSendMessage: thunk((actions, chatmessage, helpers) => {
         const { chatMessages } = helpers.getState();
         actions.setChatMessages([
