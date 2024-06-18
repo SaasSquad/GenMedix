@@ -10,7 +10,7 @@
 - [Contact](#contact)
 
 ## Introduction
-GenMedix is a mental health AI software designed to help users improve and recover their mental health through automated therapeutic intervention, perfomance tracking and personalised recommendations.
+GenMedix is a mental health AI software designed to help users improve and recover their mental health through automated therapeutic intervention, perfomance tracking and recommendations.
 
 ## Features
 - AI Assistant Chatbot (Eliza) for mental health conversations.
@@ -20,7 +20,7 @@ GenMedix is a mental health AI software designed to help users improve and recov
 - Secure and confidential.
 
 ## Tools
-# Libraries and Frameworks:
+### Libraries and Frameworks:
 - react: A JavaScript library for building user interfaces.
 - chart.js: A JavaScript library for creating charts and graphs.
 - easy-peasy: A simple, intuitive state management library for React applications.
@@ -48,13 +48,23 @@ GenMedix is a mental health AI software designed to help users improve and recov
     yarn install
     ```
 
+## API keys
+You'll need these keys:
+- Google News API: https://gnews.io/dashboard
+
 ## Usage
-1. Start the development server:
+1. Add the Google News API key to the code.
+Replace "${import.meta.env.VITE_NEWS_API_KEY}" with your API key, you'll find this code in the directory: "src/components/MentalHealthNews.jsx"
+```bash
+  const url =`https://gnews.io/api/v4/search?q=${encodeURIComponent(query
+)}&lang=en&country=us&max=10&page=${pageNumber}&apikey=${import.meta.env.VITE_NEWS_API_KEY}`
+```
+2. Start the development server:
     ```bash
     yarn run dev
     ```
-2. Open your browser and go to `http://localhost:5173` to see the application running.
-3. you can change the remote backend server url to local host after running the backend server on your local computer at ./src/backend-API/api.jsx
+3. Open your browser and go to `http://localhost:5173` to see the application running.
+4. you can change the remote backend server url to local host after running the backend server on your local computer at ./src/backend-API/api.jsx
 
 
 
