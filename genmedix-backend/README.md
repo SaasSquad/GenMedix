@@ -28,7 +28,7 @@ This project sets up an API using FastAPI to interact with a Generative AI model
 ## Backend Installation
 1. Clone the repository:
     ```bash
-    git clone https://github.com/Defdave/GenMedix.git
+    git clone https://github.com/DATICAN-UNDERGRADUATES-COMPETITION/GenMedix.git
     ```
 2. Navigate to the project directory:
     ```bash

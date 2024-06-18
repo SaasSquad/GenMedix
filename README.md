@@ -25,7 +25,7 @@ This repository contains both frontend and backend components for the GenMedix p
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/Defdave/GenMedix.git
+    git clone https://github.com/DATICAN-UNDERGRADUATES-COMPETITION/GenMedix.git
     ```
 2. Navigate to the project directory:
     ```bash
