@@ -5,9 +5,13 @@ import { db } from './firebase'
 
 
 // Create the store
-export default createStore({
+const store = createStore({
     // State properties
-    email: [],
+    name: '',
+    setName: action((state, payload) => {
+        state.name = payload
+    }),
+    email: '',
     setEmail: action((state, payload) => {
         state.email = payload
     }),
@@ -82,7 +86,7 @@ export default createStore({
     // Add a new score to Firestore and refresh the scores in the state
     addScore: thunk(async (actions, newScore) => {
         console.log(newScore)
-        const { name, happinessScore, wellBeingScore, updateType } = newScore
+        const { name, totalScore } = newScore
         const docRef = doc(db, "totalScore", name);
         const docSnap = await getDoc(docRef);
 
@@ -90,22 +94,15 @@ export default createStore({
             // Create a new document with default values if it doesn't exist
             await setDoc(docRef, {
                 Happiness: [],
-                General_well_being: [],
+                Overall_well_being: [],
+                Some_stuff: [],
             });
         }
-        const updates = {};
-        if (updateType === "happiness") {
-            updates.Happiness = arrayUnion(happinessScore);
-        }
-        if (updateType === "wellBeing") {
-            updates.General_well_being = arrayUnion(wellBeingScore);
-        }
-
-        await updateDoc(docRef, updates);
-        // await updateDoc(docRef, {
-        //     Happiness: arrayUnion(happinessScore),
-        //     general_well_being: arrayUnion(wellBeingScore)
-        // });
+        await updateDoc(docRef, {
+            Happiness: arrayUnion(totalScore),
+            Overall_well_being: arrayUnion(totalScore),
+            Some_stuff: arrayUnion(totalScore),
+        });
         actions.fetchScores(name)
     }),
     // Fetch notes from Firestore for a specific user and update the state
@@ -143,8 +140,7 @@ export default createStore({
         }
     }),
     // Save edited note to Firestore and update the state
-    saveEdit: thunk(async (actions, updatedNote, helpers) => {
-        const { notes } = helpers.getState();
+    saveEdit: thunk(async (actions, updatedNote) => {
         const { id } = updatedNote;
         try {
             const note = doc(db, "notes", id);
@@ -165,3 +161,6 @@ export default createStore({
         ])
     }),
 })
+
+
+export default store

@@ -15,7 +15,7 @@ const MentalHealthNews = () => {
 
     const url = `https://gnews.io/api/v4/search?q=${encodeURIComponent(
       query
-    )}&lang=en&country=us&max=10&page=${pageNumber}&apikey=${import.meta.env.VITE_NEWS_API_KEY}`;
+    )}&lang=en&country=us&max=10&page=${pageNumber}&apikey=${import.meta.env.VITE_NEWS_API}`;
 
     try {
       setLoading(true);

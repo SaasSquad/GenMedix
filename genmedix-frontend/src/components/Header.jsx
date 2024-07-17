@@ -49,7 +49,7 @@ const Header = () => {
                         )}
                     </div>
                     :
-                    <Link to={'login'} className="-mr-4 md:ml-0">login/signup</Link>
+                    <Link to='/login' className="-mr-4 md:ml-0">login/signup</Link>
             }
         </header>
     )
