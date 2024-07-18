@@ -102,7 +102,7 @@ const GeneralQModal = () => {
 
     const newScore = {
       name: user.displayName,
-      wellBeingScore: parseInt((wellBeingScore / 258) * 100),
+      totalScore: parseInt((wellBeingScore / 258) * 100),
       updateType: 'wellBeing'
     };
     addScore(newScore);

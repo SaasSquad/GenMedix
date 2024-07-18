@@ -64,7 +64,7 @@ const HappinessQModal = () => {
 
     const newScore = {
       name: user.displayName,
-      happinessScore: parseInt((happinessScore / 258) * 100),
+      totalScore: parseInt((happinessScore / 258) * 100),
       updateType: 'happiness'
     }
     addScore(newScore)

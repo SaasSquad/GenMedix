@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const getInitials = (initials) => {
   return initials.slice(0, 2).toUpperCase();
 };
@@ -10,6 +12,10 @@ const UserIcon = ({name}) => {
       {initials}
     </div>
   );
+};
+
+UserIcon.propTypes = {
+  name: PropTypes.string,
 };
 
 export default UserIcon;

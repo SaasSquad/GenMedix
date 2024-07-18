@@ -4,7 +4,7 @@ import { useRef, useEffect } from "react";
 import Welcome from "../components/Welcome"
 import Header from "../components/Header"
 import { Link } from 'react-router-dom';
-import Preloader from "./Preloader";
+// import Preloader from "./Preloader";
 import { useStoreActions, useStoreState } from "easy-peasy";
 
 const Home = () => {

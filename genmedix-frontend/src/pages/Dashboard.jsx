@@ -22,13 +22,17 @@ const Dashboard = () => {
 
   }, [fetchScores, name]);
 
+  if (dataScores) {
+    console.log(dataScores)
+  }
+
   const dataSets = dataScores ? {
     1: {
-      dataPoints: dataScores.Happiness.length == 0 ? ['N'] : dataScores.Happiness,
+      dataPoints: dataScores.Happiness ? dataScores.Happiness : ['N'],
       title: "Happiness",
     },
     2: {
-      dataPoints: dataScores.General_well_being.length == 0 ? ['N'] : dataScores.General_well_being,
+      dataPoints: dataScores.General_well_being ? dataScores.General_well_being : ['N'],
       title: "General Well-being",
     }
   } : '';
@@ -94,7 +98,7 @@ const Dashboard = () => {
             </div>
 
             {
-              dataScores &&
+              dataSets &&
               <LineChart
               dataPoints={dataSets[selectedChart].dataPoints}
               title={dataSets[selectedChart].title}

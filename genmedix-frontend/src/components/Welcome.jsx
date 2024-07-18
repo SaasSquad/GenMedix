@@ -3,6 +3,8 @@ import { FaRocketchat } from "react-icons/fa";
 import { RxDashboard } from "react-icons/rx";
 import { FaBook } from "react-icons/fa";
 import { GrResources } from "react-icons/gr";
+import PropTypes from 'prop-types';
+
 
 const Welcome = ({name}) => {
 
@@ -29,5 +31,9 @@ const Welcome = ({name}) => {
     </div>
   )
 }
+
+Welcome.propTypes = {
+  name: PropTypes.string,
+};
 
 export default Welcome
